@@ -1,5 +1,7 @@
 # Notes of web-crawler 101  -- Simulate visiting webpage
 
+Author: Mingzhe Hu                                                                 To be continued
+
 0. First in first
 
    Check the robots.txt of the webpage and get to know what information and user-agent are available. 
@@ -12,7 +14,7 @@
 
    Once successfully logged in, cookies may be produced to maintain the login status. The explanation of the existence of cookies could be: a TCP end-to-end connection is time-consuming, so once the connection is built, we can set the connection in a **keep-alive** status and attach an expired date to the connection to save time. The key facts of the connection could be stored as cookies. Typically for a login action, SessionId will be stored to simplify latter requests, especially when you frequently access the information only available after logging in. The cookies are stored in the browser. That means when you log in through Chrome, the cookies won't help for Microsoft Edge. To leverage the cookies, we need to create a session. Make full use of class `requests.Session()` to avoid entering repeated personal information at all times.
 
-   A straightforward way to load cookies is to manully transfer it to a string format. However, there is a more elegant way, thanks to `http.cookiejar`. Cookies could be saved in a local text file in either Mozilla or LWP format. Cooperating with `urllib.request`, post/get request can export & import cookies implicitly instead of storing it in variables. The following code shows how it works:
+   A straightforward way to load cookies is to manully transfer it to a string format. However, there is a more elegant way, thanks to `http.cookiejar`. Cookies could be saved in a local text file in either Mozilla or LWP format (Personally recommend). Cooperating with `urllib.request`, post/get request can export & import cookies implicitly instead of storing it in variables. The following code shows how it works:
 
    ```python
    cookies = http.cookiejar.LWPCookieJar()
@@ -27,7 +29,7 @@
    response = opener.open(req)
    ```
 
-   One tip for grasping the login URL is to type incorrect password to stop page jump.
+   One tip for grasping the login URL is to type incorrect password to prevent page jump.
 
    A more popular opensource module is `requests-html`, available through pip install. Similar to requests, session can be created via class HTMLSession(). Also, elements can be find with response.html.find() and its css selector.
 
