@@ -37,10 +37,14 @@ Author: Mingzhe Hu                                                              
 
    This module is recognized as a less efficient but more authentic way of visiting webpage with browser.
 
-   Start with the proxy.
+   Start with the proxy. Use `browsermobproxy` even though selenium does have its server module.
 
    Submodule `webdriver` is of great importance.
 
    Issue 1: Dealing with unofficial CA certificates.
 
+   There is no denying that more and more platforms like Apple Store demands their product to be HTTPs instead of mere HTTP. Based on such fact, certificate authentication has to be proceed before a webpage is opened. If you are confronted with a warning, declaring the web's certificate is not trustworthy, and you insist on visiting it, you need to ignore the warning. This is not a risk, sometimes. The reason why such issue happens is that the certificate may be authenticated by the platform itself. There are a lot of commands that can ignore this warning. In selenium, just add an argument: `'--ignore-certificate-errors'`, everything will be fine.
+   
    Issue 2: Dealing with uninteractive elements.
+   
+   Another annoying fact is that when you intend to click something, like a button, you may get an error, saying the request element is not interactable. This is because the element is hidden unless you put your mouse on the right place. Simulating this action is the solution to this problem. First find the element, then excuate `ActionChains(driver).move_to_element(element).perform()`. Everything will be fine.
