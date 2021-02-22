@@ -1,6 +1,6 @@
 # Notes of web-crawler 101  -- Simulate visiting webpage
 
-Author: Mingzhe Hu                                                                 To be continued
+Author: Mingzhe Hu                                                                 (To be continued)
 
 0. First in first
 
