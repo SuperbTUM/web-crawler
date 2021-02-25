@@ -47,4 +47,8 @@ Author: Mingzhe Hu                                                              
    
    Issue 2: Dealing with uninteractive elements.
    
-   Another annoying fact is that when you intend to click something, like a button, you may get an error, saying the request element is not interactable. This is because the element is hidden unless you put your mouse on the right place. Simulating this action is the solution to this problem. First find the element, then excuate `ActionChains(driver).move_to_element(element).perform()`. Everything will be fine.
+   Another annoying fact is that when you intend to click something, a button for instance, you may get an error, saying the request element is not interactable. This is because the element is hidden unless you put your mouse on the right place. Simulating this action is the solution to this problem. First find the element, then excuate `ActionChains(driver).move_to_element(element).perform()`. Everything will be fine.
+
+3. Dynamic webpage
+
+   For privacy concern, more and more service/content providers are more willing to use dynamic webpage with the help of Ajax. Ajax is a new method that works with Javascript and XML. If you want to visit such webpages using automatic tools, you should focus more on the elements and networks rather than the resource code of the webpage. In this case, `BeautifulSoup` and `Selenium` are recommended. `BeautifulSoup` can help us to locate the desired elements when id, xpath and css selector are all unavailable, using `find()` function. This personal function can locate elements with all kinds of titles and returns a `tag` result in a XML format. `Selenium`, just as the previous section introduced, simulate users visiting certain webpage. This is an effective solution, but drawbacks are apparent: for each request, we need to wait for a few seconds to have the page fully loaded.
